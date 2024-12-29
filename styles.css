@@ -32,12 +32,14 @@ header {
     align-items: center;
     flex-wrap: wrap;
     opacity: 0.1;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .electrical-icons i {
-    font-size: 40px;
-    margin: 10px;
-    color: #333;
+    font-size: 24px;
+    margin: 0 10px;
+    color: #0066cc; /* Blue color for header icons */
 }
 
 header .container {
@@ -57,11 +59,19 @@ header .container {
 .profile-image {
     width: 200px;
     height: 200px;
-    border-radius: 50%;
-    border: 5px solid white;
-    margin-bottom: 1rem;
+    border-radius: 15px;
     object-fit: cover;
-    animation: floatAnimation 3s ease-in-out infinite;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+    border-color: #2ecc71;
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.6);
+    animation: none;
 }
 
 section {
@@ -469,6 +479,49 @@ nav a:hover {
     }
 }
 
+/* Mobile Menu Styles */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-blue);
+        padding: 1rem 0;
+    }
+
+    .nav-links a {
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+}
+
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -476,6 +529,7 @@ nav a:hover {
 }
 
 @keyframes slideInFromLeft {
+/* Mobile Responsive Styles */
     from { transform: translateX(-100px); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
 }
@@ -511,4 +565,103 @@ img {
 
 img.loading {
     filter: blur(10px);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    nav {
+        flex-direction: column;
+        padding: 0.5rem 0;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 0.8rem 0;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .skill-grid,
+    .project-grid,
+    .experience-grid,
+    .education-grid,
+    .certification-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    section {
+        padding: 1rem;
+        margin: 1rem 0.5rem;
+    }
+
+    .contact-form {
+        padding: 0 1rem;
+    }
+
+    .icon-wrapper {
+        width: 50px;
+        height: 50px;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .rr {
+        width: 30px;
+        height: 30px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .electrical-icons i {
+        font-size: 18px;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .contact-form button {
+        width: 100%;
+    }
+
+    .map {
+        height: 250px;
+    }
 }
