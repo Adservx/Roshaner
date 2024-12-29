@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Roshan Yadav</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+        }
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1e3c72;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 0;
+            border-radius: 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            color: #1e3c72;
+            font-weight: 600;
+        }
+        header p {
+            color: #2a5298;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            max-width: 1200px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.85);
+            margin: 0;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #1e3c72;
+            padding: 10px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            background: rgba(42, 82, 152, 0.1);
+            color: #1e3c72;
+            transform: translateY(-2px);
+        }
+        nav a::after {
+            background-color: #1e3c72;
+        }
+        section {
+            padding: 20px 0;
+            animation: fadeIn 1s ease-out;
+            margin: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .skill-grid, .project-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .skill, .project {
+            background: #f4f4f4;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 30%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .skill:hover, .project:hover {
+            transform: translateY(-5px);
+        }
+        .experience-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .experience {
+            background: #f4f4f4;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 45%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 600px;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .contact-form label {
+            font-weight: 500;
+            color: #2a5298;
+            font-size: 0.95rem;
+            margin-bottom: -0.8rem;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #1e3c72;
+            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.2);
+            outline: none;
+            transform: translateY(-2px);
+        }
+        .contact-form button {
+            margin-top: 1rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
+        }
+        .contact-form button:active {
+            transform: translateY(-1px);
+        }
+        @media (max-width: 768px) {
+            .contact-form {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(51, 51, 51, 0.95);
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+        .social-links a {
+            margin: 0 10px;
+        }
+        .social-links img {
+            width: 30px;
+            height: 30px;
+        }
+        .testimonial-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .testimonial {
+            background: #f4f4f4;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 45%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .testimonial img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        .map {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+        }
+        .education-grid, .certification-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .education, .certification {
+            background: #f4f4f4;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 45%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .education:hover, .certification:hover {
+            transform: translateY(-5px);
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #333;
+            margin: 10px auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animation Keyframes */
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Header Animation */
+        header .image {
+            animation: bounceIn 1.5s ease-out;
+        }
+        
+        header h1 {
+            animation: slideInRight 1s ease-out;
+        }
+
+        /* Section Animations */
+        .skill, .project, .experience, .education, .certification, .testimonial {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        /* Hover Effects */
+        .skill:hover, .project:hover, .experience:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Social Links Animation */
+        .social-links a {
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: rotate(360deg) scale(1.2);
+        }
+
+        /* Contact Form Animation */
+        .contact-form input, .contact-form textarea {
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation Animation */
+        nav a {
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #1e3c72;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Add new icon styles */
+        .icon-wrapper {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill:hover .icon-wrapper,
+        .project:hover .icon-wrapper {
+            transform: scale(1.1);
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            color: #1e3c72;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px 0;
+            }
+
+            nav a {
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                margin: 10px;
+                padding: 20px;
+            }
+
+            .skill-grid, .project-grid, .experience-grid, 
+            .education-grid, .certification-grid, .testimonial-grid {
+                flex-direction: column;
+            }
+
+            .skill, .project, .experience, 
+            .education, .certification, .testimonial {
+                flex: 1 1 100%;
+                margin: 10px 0;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .icon-wrapper {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+                margin: 1rem 0;
+                width: 100%;
+            }
+
+            .map {
+                height: 250px;
+            }
+
+            .social-links {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .social-links a {
+                margin: 5px;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            header .image {
+                width: 120px;
+                height: 120px;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 0.8rem;
+            }
+
+            .contact-form button {
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        /* Prevent horizontal scroll */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Improve touch targets */
+        @media (hover: none) {
+            nav a, .contact-form button, .social-links a {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 20px;
+            }
+
+            input, textarea, select {
+                font-size: 16px; /* Prevent zoom on focus in iOS */
+            }
+        }
+    </style>
+    <script>
+        // Add this before closing </head>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe all animated elements
+            document.querySelectorAll('.skill, .project, .experience, .education, .certification, .testimonial').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img class="image" src="roshanx.jpg" alt="Roshan Yadav" style="border-radius: 50%; width: 150px; height: 150px;">
+            <h1>Roshan Yadav</h1>
+            <p>Junior Electrical Engineer | Innovator | Problem Solver</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hi, I'm Roshan Yadav, a junior electrical engineer with a passion for designing, developing, and optimizing electrical systems. I specialize in circuit design, power systems, and energy efficiency solutions.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-cogs"></i>Skills</h2>
+            <div class="skill-grid">
+                <div class="skill">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Circuit Design</h3>
+                    <p>Experience in creating efficient and reliable circuit layouts.</p>
+                </div>
+                <div class="skill">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Power Systems</h3>
+                    <p>Knowledge in designing, analyzing, and maintaining power distribution systems.</p>
+                </div>
+                <div class="skill">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>PLC Programming</h3>
+                    <p>Expertise in programming logic controllers for automation processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i>Projects</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Smart Home Automation</h3>
+                    <p>Developed an energy-efficient smart home system with automated lighting and appliance control.</p>
+                </div>
+                <div class="project">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3>Renewable Energy Grid</h3>
+                    <p>Designed a small-scale renewable energy grid integrating solar power with existing systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i>Experience</h2>
+            <div class="experience-grid">
+                <div class="experience">
+                    <h3>Electrical Engineer Intern</h3>
+                    <p>XYZ Company | June 2020 - August 2020</p>
+                    <p>Worked on designing and testing electrical circuits for various projects.</p>
+                </div>
+                <div class="experience">
+                    <h3>Research Assistant</h3>
+                    <p>ABC University | September 2019 - May 2020</p>
+                    <p>Assisted in research on renewable energy systems and their integration with existing power grids.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i>Education</h2>
+            <div class="education-grid">
+                <div class="education">
+                    <h3>Bachelor of Electrical Engineering</h3>
+                    <p>University Name</p>
+                    <p>2018 - 2022</p>
+                    <p>CGPA: 8.5/10</p>
+        </div>
+                </div>
+                <div class="education">
+                    <h3>Higher Secondary Education</h3>
+                    <p>School Name</p>
+                    <p>2016 - 2018</p>
+                    <p>Percentage: 85%</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-certificate"></i>Certifications</h2>
+            <div class="certification-grid">
+                <div class="certification">
+                    <h3>PLC Programming</h3>
+                    <p>Issued by: Siemens</p>
+                    <p>Date: June 2021</p>
+                </div>
+                <div class="certification">
+                    <h3>Power Systems Design</h3>
+                    <p>Issued by: IEEE</p>
+                    <p>Date: December 2021</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-quote-left"></i>Testimonials</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <img src="client1.jpg" alt="Client 1">
+                    <p>"Roshan is a highly skilled engineer who consistently delivers high-quality work. His attention to detail is exceptional."</p>
+                    <p>- Client 1</p>
+                </div>
+                <div class="testimonial">
+                    <img src="client2.jpg" alt="Client 2">
+                    <p>"Working with Roshan was a pleasure. He is very knowledgeable and always willing to go the extra mile."</p>
+                    <p>- Client 2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-envelope"></i>Contact</h2>
+            <form class="contact-form" action="https://submit-form.com/YUFXI8kDw">
+                <label for="first-name"><i class="fas fa-user"></i> First Name</label>
+                <input id="first-name" name="first-name" type="text" required />
+                
+                <label for="last-name"><i class="fas fa-user"></i> Last Name</label>
+                <input id="last-name" name="last-name" type="text" required />
+                
+                <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                <input id="email" name="email" type="email" required />
+                
+                <label for="message"><i class="fas fa-comment"></i> Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+            
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086509374682!2d144.9630579153169!3d-37.81410797975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8b6f4b0b1a!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1633939381234!5m2!1sen!2sau" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>©lick the given social media icons to know more about Me :)</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/roshanyada3/" target="_blank"><img class="rr" src="insta icon.png"></a>
+                <a href="https://www.facebook.com/profile.php?id=100034822098989" target="_blank"><img class="rr" src="facebook icon.png"></a>
+                <a href="https://www.linkedin.com/in/roshanyadav/" target="_blank"><img class="rr" src="linkedin icon.png"></a>
+                <a href="https://twitter.com/roshanyadav" target="_blank"><img class="rr" src="twitter icon.png"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
