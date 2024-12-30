@@ -11,6 +11,7 @@ body {
     line-height: 1.6;
     background-color: var(--light-blue);
     color: #333;
+    padding-top: 0; /* Remove the padding-top */
 }
 
 header {
@@ -59,12 +60,22 @@ header .container {
 .profile-image {
     width: 200px;
     height: 200px;
-    border-radius: 15px;
+    border-radius: 50%;  /* Changed from 15px to 50% for round shape */
     object-fit: cover;
     border: 2px solid #ddd;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     animation: pulse 2s infinite;
+    cursor: pointer; /* Add cursor pointer */
+}
+
+/* Add explosion particle styles */
+.particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    opacity: 0;
 }
 
 .profile-image:hover {
@@ -181,13 +192,7 @@ footer .fas {
     border-radius: 5px;
 }
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+
 
 /* Social Links */
 .social-links {
@@ -286,13 +291,13 @@ footer .fas {
 nav {
     background: var(--gradient);
     padding: 1rem 0;
-    position: sticky;
-    top: 0;
+    width: 100%;
     z-index: 1000;
     text-align: center;
     display: flex;
     justify-content: center;
     gap: 2rem;
+    /* Remove position: sticky and top properties */
 }
 
 nav a {
@@ -433,14 +438,6 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* Map */
-.map {
-    height: 400px;
-    margin-top: 2rem;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
 /* Testimonials */
 .testimonial {
     text-align: center;
@@ -472,10 +469,6 @@ nav a:hover {
     .testimonial-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
-    }
-
-    .map {
-        height: 300px;
     }
 }
 
@@ -659,9 +652,5 @@ img.loading {
 
     .contact-form button {
         width: 100%;
-    }
-
-    .map {
-        height: 250px;
     }
 }
